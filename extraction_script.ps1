@@ -19,4 +19,4 @@ ForEach ($u in $usersFromFile)
     $userstats = $userstats + $foundUserStats
 }
 
-$userstats | Export-Csv -Path "C:\Users\jramphul\Desktop\userstats3701.csv" -notype
+$userstats | Export-Csv -Path "C:\Users\jramphul\Desktop\userstats.csv" -notype
