@@ -7,16 +7,18 @@ Add-PSSnapin Microsoft.Exchange.Management.Powershell.Support
 #   %windir%\System32\WindowsPowerShell\v1.0\Modules
 ImportSystemModules
 
-$usersFromFile = Get-Content "C:\Users\jramphul\Desktop\test.csv"
+$usersfromfile = Get-Content "C:\Users\jramphul\Desktop\test.csv"
 
 $userstats = @()
-ForEach ($u in $usersFromFile)
+ForEach ($u in $usersfromfile)
 {
     Write-Host "Processing $u..."
-    $foundUserStats = Get-MailboxStatistics $u | `
-        Select DisplayName, TotalItemSize, ItemCount, StorageGroupName
-        
-    $userstats = $userstats + $foundUserStats
+    
+    #get cmdlet can be changed depending on needs.
+    $founduserstats = Get-MailboxStatistics $u | `
+       Select DisplayName, TotalItemSize, ItemCount, StorageGroupName
+
+    $userstats = $userstats + $founduserstats
 }
 
 $userstats | Export-Csv -Path "C:\Users\jramphul\Desktop\userstats.csv" -notype
