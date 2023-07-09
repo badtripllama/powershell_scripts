@@ -4,14 +4,14 @@ Connect-AzureAD
 Connect-MsolService
 
 #get data from file
-$usersFromFile = Get-Content "C:\Users\jramphul\Desktop\test1.csv"
+$usersfromfile = Get-Content "C:\Users\jramphul\Desktop\test1.csv"
 
 #initialise result set
 $output = @()
 
  
 #for each line in csv
-foreach ($u in $usersFromFile)
+foreach ($u in $usersfromfile)
 {
     Write-Host "Processing $u..."
     $licenses = Get-MsolUser -UserPrincipalName $u | select Licenses -ExpandProperty Licenses
@@ -20,19 +20,19 @@ foreach ($u in $usersFromFile)
 #for each license type in license property
     foreach ($license in $licenses)
     {
-        $serviceName = $license.ServiceStatus.ServicePlan.ServiceName
-        $provisioningStatus = $license.ServiceStatus.ProvisioningStatus
+        $servicename = $license.ServiceStatus.ServicePlan.ServiceName
+        $provisioningstatus = $license.ServiceStatus.ProvisioningStatus
 
-        for ($i = 0; $i -lt $serviceName.Count; $i++)
+        for ($i = 0; $i -lt $servicename.Count; $i++)
         {
-            $outputLine = [PSCustomObject] 
+            $outputline = [PSCustomObject] 
 			@{
                 User = $u
-                ServiceName = $serviceName[$i]
-                ProvisioningStatus = $provisioningStatus[$i]
+                ServiceName = $servicename[$i]
+                ProvisioningStatus = $provisioningstatus[$i]
             }
 
-            $output += $outputLine
+            $output += $outputline
         }
     }
 }
