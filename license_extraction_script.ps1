@@ -4,7 +4,7 @@ Connect-AzureAD
 Connect-MsolService
 
 #get data from file
-$usersfromfile = Get-Content "C:\Users\jramphul\Desktop\test1.csv"
+$usersfromfile = Get-Content "C:\Users\...\test1.csv"
 
 #initialise result set
 $output = @()
@@ -35,4 +35,4 @@ foreach ($u in $usersfromfile)
     }
 }
  
-$output | Export-Csv -Path "C:\Users\jramphul\Desktop\exp1.csv" -NoTypeInformation
+$output | Export-Csv -Path "C:\Users\...\exp1.csv" -NoTypeInformation
