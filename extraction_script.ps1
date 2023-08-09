@@ -7,7 +7,7 @@ Add-PSSnapin Microsoft.Exchange.Management.Powershell.Support
 #   %windir%\System32\WindowsPowerShell\v1.0\Modules
 ImportSystemModules
 
-$usersfromfile = Get-Content "C:\Users\...\test.csv"
+$usersfromfile = Get-Content "C:\Users\badtripllama\Desktop\test.csv"
 
 $userstats = @()
 ForEach ($u in $usersfromfile)
@@ -21,4 +21,4 @@ ForEach ($u in $usersfromfile)
     $userstats = $userstats + $founduserstats
 }
 
-$userstats | Export-Csv -Path "C:\Users\...\userstats.csv" -notype
+$userstats | Export-Csv -Path "C:\Users\badtripllama\Desktop\userstats.csv" -notype
