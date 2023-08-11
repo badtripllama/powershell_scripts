@@ -22,3 +22,16 @@ ForEach ($u in $usersfromfile)
 }
 
 $userstats | Export-Csv -Path "C:\Users\badtripllama\Desktop\userstats.csv" -notype
+
+
+
+
+
+
+
+
+
+
+$AllSigninLogs = Get-AzureADAuditSignInLogs -All $true
+
+$AllSigninLogs | Export-Csv -Path "C:\Users\jramphul\Desktop\userstats.csv" -notype
