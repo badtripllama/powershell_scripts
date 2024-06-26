@@ -23,3 +23,22 @@ ForEach ($u in $usersfromfile)
 
 $userstats | Export-Csv -Path "C:\Users\badtripllama\Desktop\userstats.csv" -notype
 
+<#
+$usersfromfile = Get-Content "C:\Users\badtripllama\Desktop\test.csv"
+
+$userstats = @()
+ForEach ($u in $usersfromfile)
+{
+    Write-Host "Processing $u..."
+    
+    #get cmdlet can be changed depending on needs.
+    $founduserstats = resolve-dnsname -name $u -Type mx $u | `
+       Select Name, NameExchange
+
+    $userstats = $userstats + $founduserstats
+}
+
+$userstats | Export-Csv -Path "C:\Users\badtripllama\Desktop\userstats.csv" -notype
+
+
+#>
